@@ -1,36 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="portfolioPessoal">
+
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/userPerfilCtrl.js"></script>
     <title>igorlucas.github.io</title>
+    <style>
+        /* .jumbotron {
+            background-color: white;
+        } */
+
+        .ui-accordion-title {
+            border: 1px solid #CCCCCC;
+            cursor: pointer;
+            background: -moz-linear-gradient(top, #CCCCCC, #EEEEEE);
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px 5px 0px 0px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .ui-accordion-content {
+            border: 1px dashed #CCCCCC;
+            border-top: 0px;
+            border-radius: 0px 0px 5px 5px;
+            background-color: #FFFFFF;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .ui-accordion-open {
+            display: block;
+        }
+
+        .ui-accordion-close {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    <h1 style="text-align:center">Portfólio Pessoal</h1>
-    <div id="perfil" style="text-align:center; float:left">
-        <h1>Igor Lucas N Silva</h1>
-        <h3>Estudante de Sistemas de Informação</h3>
-        <a class="btn btn-lg btn-default fa-2x" href="https://github.com/igorlucas"><i class="fab fa-github"></i></a>
-        <a class="btn btn-lg btn-default" href="https://www.linkedin.com/in/igor-lucas-silva-5a0980b0/"><i class="fab fa-linkedin fa-2x"></i></a>
-        <a class="btn btn-lg btn-default" href="https://twitter.com/IgorLuc07225414"><i class="fab fa-twitter-square fa-2x"></i></a>
-        <a class="btn btn-lg btn-default" href="https://www.facebook.com/igor.lucas.5074"><i class="fab fa-facebook-square fa-2x"></i></a>
-        <a class="btn btn-lg btn-default" href="https://www.instagram.com/igor.lucas.silva/?hl=pt-br"><i class="fab fa-instagram fa-2x"></i></a>
+
+<body ng-controller="userPerfilCtrl">
+    <div class="jumbotron container" style="display: flow-root; margin-top:20px">
+        <div  id="perfil" style="float:left">
+            <h1>{{nome}}</h1>
+            <h3>{{cargo}}</h3>
+            <a class="btn btn-lg btn-default fa-2x" href="https://github.com/igorlucas"><i class="fab fa-github"></i></a>
+            <a class="btn btn-lg btn-default" href="https://www.linkedin.com/in/igor-lucas-silva-5a0980b0/"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a class="btn btn-lg btn-default" href="https://twitter.com/IgorLuc07225414"><i class="fab fa-twitter-square fa-2x"></i></a>
+            <a class="btn btn-lg btn-default" href="https://www.facebook.com/igor.lucas.5074"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a class="btn btn-lg btn-default" href="https://www.instagram.com/igor.lucas.silva/?hl=pt-br"><i class="fab fa-instagram fa-2x"></i></a>
+        </div>
+        <div  id="descricao" style="float:left">
+            <div id="id-infoAcad" ng-click="openAccordion('id-infoAcad')">
+                <div class="ui-accordion-title">Informações Acadêmicas</div>
+                <div class="ui-accordion-content ui-accordion-close">
+                    <p>{{infoAcademicas}}</p>
+                </div>
+            </div>
+
+
+            <div id="id-infoMercado" ng-click="openAccordion('id-infoMercado')">
+                <div class="ui-accordion-title">Informações de Mercado</div>
+
+                <div class="ui-accordion-content ui-accordion-close">
+                    <ul ng-repeat="item in infoMercado">
+                        <li>{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="descricao" style="float:left; text-align:justify">
-        <p>
-            <b style="text-align:center">Informações Acadêmicas</b><br>
-            Atuamente estudante do curso de bacharel em sistemas de informação no centro universitário UniFanor.
-        </p>
-        <p>
-            <b style="text-align:center">Informações de Mercado</b><br>
-            <ul>
-                <li>Integrante do projeto da fábrica de software no centro universitário UniFanor.</li>
-                <li>Trainee em Desenvolvimento de Software pela empresa IVIA.</li>
-                <li>Estagiário de Sistemas de Informação na Organização Farias Brito.</li>
-            </ul>
-        </p>
-    </div>
+    <!-- <div class="container">Criado por @Igor Lucas</div> -->
 </body>
+
 </html>
